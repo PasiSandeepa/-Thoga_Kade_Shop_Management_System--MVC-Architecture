@@ -1,0 +1,165 @@
+/* Base button style */
+.button {
+    -fx-padding: 8 16;
+    -fx-background-radius: 10;
+
+
+
+}
+
+/* 🌊 Ocean Blue */
+.button.blue {
+    -fx-background-color: linear-gradient(#2193b0, #6dd5ed);
+}
+.button.blue:hover {
+    -fx-background-color: linear-gradient(#1c86a7, #58c7e6);
+}
+
+/* 🍓 Strawberry Red */
+.button.red {
+    -fx-background-color: linear-gradient(#ff416c, #ff4b2b);
+}
+.button.red:hover {
+    -fx-background-color: linear-gradient(#ff5a7d, #ff6340);
+}
+
+/* 🍃 Fresh Green */
+.button.green {
+    -fx-background-color: linear-gradient(#56ab2f, #a8e063);
+}
+.button.green:hover {
+    -fx-background-color: linear-gradient(#4b992a, #9cd85c);
+}
+
+/* 🌞 Sunset Orange */
+.button.orange {
+    -fx-background-color: linear-gradient(#f2994a, #f2c94c);
+}
+.button.orange:hover {
+    -fx-background-color: linear-gradient(#e68a3f, #e5ba40);
+}
+
+/* 💜 Royal Purple */
+.button.purple {
+    -fx-background-color: linear-gradient(#8e2de2, #4a00e0);
+}
+.button.purple:hover {
+    -fx-background-color: linear-gradient(#7b24c9, #3e00c5);
+}
+
+/* 🖤 Elegant Black */
+.button.black {
+    -fx-background-color: linear-gradient(#232526, #414345);
+}
+.button.black:hover {
+#mainPane{
+    -fx-background-color: white;
+}
+
+.btn{
+    -fx-background-color:#EA2027;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.textPane{
+    -fx-background-color: white;
+    -fx-border-color: rgba(76, 73, 73, 0.83);
+    -fx-border-radius: 15px;
+}
+.textField{
+    -fx-background-color: white;
+    -fx-prompt-text-fill: #726d6d;
+}
+.textLabel{
+    -fx-background-color: white;
+    -fx-padding: 0 5px 0px 5px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(76, 73, 73, 0.83);;
+}
+.table-view:focused{
+    -fx-background-insets: 0px;
+}
+
+.table-view .column-header{
+    -fx-size:40px;
+    -fx-background-color: #192a56;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+}
+
+.table-view .table-row-cell:empty{
+    -fx-background-color: white;
+}
+.table-view .table-row-cell:selected{
+    -fx-background-color:linear-gradient(to right, rgba(119, 8, 245, 0.29), rgba(15, 93, 255, 0.39));
+}
+
+.table-view .table-row-cell:selected *{
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(54, 49, 49);
+}
+
+.actionIcon{
+    -fx-cursor: hand;
+    -fx-text-fill: red;
+}
+
+.dashboard-colour2 {
+    -fx-background-color: #c8d6e5;
+
+}
+/* AnchorPane background */
+.anchor-pane {
+    -fx-background-color: linear-gradient(to bottom, #e0eafc, #cfdef3);
+}
+
+
+}
+
+/* TextFields */
+.text-field, .password-field {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #a0a0a0;
+    -fx-border-width: 1.5;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 14px;
+}
+
+/* Button style */
+
+
+.button:hover {
+    -fx-background-color:#9AECDB;
+}
+
+/* TableView */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #a0a0a0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #e55039;
+}
+
+.table-view .column-header, .table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+.jbutton{
+  -fx-background-color:#009432;
+
+}
+.cbutton{
+ -fx-background-color:#353b48;
+}
+.Dbutton{
+ -fx-background-color:#be2edd;
+}
