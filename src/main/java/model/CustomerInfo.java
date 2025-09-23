@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@NoArgsConstructor
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class CustomerInfo {
     private String custID;

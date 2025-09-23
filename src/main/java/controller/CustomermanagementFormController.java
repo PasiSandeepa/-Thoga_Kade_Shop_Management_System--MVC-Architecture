@@ -20,7 +20,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class CustomermanagementFormController  implements Initializable {
+public class CustomermanagementFormController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colCity;
@@ -99,7 +99,7 @@ public class CustomermanagementFormController  implements Initializable {
         String Password = txtCustPassword.getText();
 
         CustomerManagementController customerManagementController = new CustomerManagementController();
-        customerManagementController.addCustomerDetails(CustId,CustTitle,CustName,DOB,Salary,Address,City,Province,PostalCode,Password);
+        customerManagementController.addCustomerDetails(CustId, CustTitle, CustName, DOB, Salary, Address, City, Province, PostalCode, Password);
 
     }
 
@@ -146,21 +146,37 @@ public class CustomermanagementFormController  implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String CustId = txtCustId.getText();
-        String CustTitle = txtCustTitle.getText();
-        String CustName = txtCustName.getText();
-        String DOB = txtDOB.getText();
-        String Salary = txtSalary.getText();
-        String Address = txtCustAddress.getText();
-        String City = txtCity.getText();
-        String Province = txtProvince.getText();
-        String PostalCode = txtPostalCode.getText();
-        String Password = txtCustPassword.getText();
+        String custId = txtCustId.getText();
+        String custTitle = txtCustTitle.getText();
+        String custName = txtCustName.getText();
+        String dob = txtDOB.getText();
+        String salary = txtSalary.getText();
+        String address = txtCustAddress.getText();
+        String city = txtCity.getText();
+        String province = txtProvince.getText();
+        String postalCode = txtPostalCode.getText();
+        String password = txtCustPassword.getText();
+
+        CustomerManagementController cmc = new CustomerManagementController();
+        boolean updated = cmc.UpdateCustomer(custTitle, custName, dob, salary, address, city, province, postalCode, password, custId);
+
+        Alert alert;
+        if (updated) {
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Update Successful");
+            alert.setHeaderText(null);
+            alert.setContentText("Customer's data has been updated successfully!");
+        } else {
+            alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Update Failed");
+            alert.setHeaderText(null);
+            alert.setContentText("Customer ID not found or an error occurred!");
+        }
+        alert.showAndWait();
+
 
         CustomerManagementController customerManagementController = new CustomerManagementController();
-        customerManagementController.UpdateCustomer(CustTitle,CustName,DOB,Salary,Address,City,Province,PostalCode,Password,CustId);
-
-
+        customerManagementController.UpdateCustomer(custTitle,custName,dob,salary,address,city,province,postalCode,password,custId);
     }
 
 
@@ -175,6 +191,27 @@ public class CustomermanagementFormController  implements Initializable {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, id);
             int affectedRows = preparedStatement.executeUpdate();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Update Successful");
+            alert.setHeaderText(null);
+            alert.setContentText("Customer's data has been updated successfully!");
+            alert.showAndWait();
+
+            if (affectedRows > 0) {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Update Successful");
+                alert.setHeaderText(null);
+                alert.setContentText("Customer's data has been updated successfully!");
+                alert.showAndWait();
+            } else {
+                alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Update Failed");
+                alert.setHeaderText(null);
+                alert.setContentText("Customer ID not found. Update failed!");
+                alert.showAndWait();
+            }
+
 
             if (affectedRows > 0) {
                 System.out.println("customer deleted successfully");
@@ -194,7 +231,8 @@ public class CustomermanagementFormController  implements Initializable {
 
 
             }
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+
             alert.setTitle("Delete Successful");
             alert.setHeaderText(null);
             alert.setContentText("Customer's data has been deleted successfully!");
