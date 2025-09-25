@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class ItemManagementFormController implements Initializable {
 
+    private ItemManagementService itemManagementService = new ItemManagementController();
+
     @FXML
     private TableColumn<?, ?> ColUnitPrice;
 
@@ -91,18 +93,54 @@ public class ItemManagementFormController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String itemCode = txtItemCode.getText();
+        boolean updated = itemService.Updateitem(
+                txtItemCode.getText(),
+                txtDescription.getText(),
+                txtPackSize.getText(),
+                Double.parseDouble(txtUnitPrize.getText()),
+                Integer.parseInt(txtqtyOnHand.getText())
+        );
 
+        if (updated) {
+            showAlert(Alert.AlertType.INFORMATION, "Update Successful", "Item data updated successfully!");
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Update Failed", "Update failed! Check Item ID.");
+        }
+        // table Refresh
+        btnReloadOnAction(event);
+    }
+
+    private void clearFields() {
+        txtItemCode.clear();
+        txtDescription.clear();
+        txtPackSize.clear();
+        txtUnitPrize.clear();
+        txtqtyOnHand.clear();
     }
 
     @FXML
     void btndeleteOnAction(ActionEvent event) {
+        String id = txtItemCode.getText();
+        int affectedRows = itemService.deleteitem(id); // deleteitem method DB delete returns affected rows
 
+        if (affectedRows > 0) {
+            showAlert(Alert.AlertType.INFORMATION, "Delete Successful", "Item deleted successfully!");
+            btnReloadOnAction(event);
+            clearFields();
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Delete Failed", "Item not found!");
+        }
+
+}
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
-    @FXML
-    void btnviewcustomerOnAction(ActionEvent event) {
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -126,6 +164,11 @@ public class ItemManagementFormController implements Initializable {
                 txtqtyOnHand.setText(String.valueOf(selectedItem.getQtyOnHand()));
             }
         });
+    }
+
+    public void btnviewOrderOnAction(ActionEvent actionEvent) {
+
+
     }
 }
 

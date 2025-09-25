@@ -3,6 +3,7 @@ package controller.itemController;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import model.ItemInfo;
 
 import java.sql.Connection;
@@ -60,6 +61,43 @@ public class ItemManagementController implements ItemManagementService {
         }
         return itemInfos;
     }
-}
 
+    @Override
+    public boolean Updateitem(String itemCode, String description, String packSize, Double unitPrice, Integer qtyOnHand) {
+        String SQL = "UPDATE item SET description=?, packSize=?, unitPrice=?, qtyOnHand=? WHERE itemCode=?";
+        Connection connection = null;
+        try {
+            connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+
+            preparedStatement.setString(1, description);
+            preparedStatement.setString(2, packSize);
+            preparedStatement.setDouble(3, unitPrice);
+            preparedStatement.setInt(4, qtyOnHand);
+            preparedStatement.setString(5, itemCode);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    @Override
+    public int deleteitem(String id) {
+        try (Connection connection = DBConnection.getInstance().getConnection()) {
+            String SQL = "DELETE FROM item WHERE itemCode = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, id);
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
 
