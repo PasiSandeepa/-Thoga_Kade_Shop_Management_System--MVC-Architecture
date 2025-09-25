@@ -154,7 +154,7 @@ public class CustomermanagementFormController implements Initializable {
     public void btnviewcustomerOnAction(ActionEvent actionEvent) {
         Stage stage = new Stage();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Item_Form.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Item_management.fxml"))));
             stage.show();
 
             showAlert(Alert.AlertType.INFORMATION, "View Item", "View Item Page loaded!");
