@@ -1,4 +1,4 @@
 package controller.OrderDetailsController;
 
-public class OrderDetailsManagementService {
+public interface OrderDetailsManagementService {
 }
