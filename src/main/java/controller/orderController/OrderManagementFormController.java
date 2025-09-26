@@ -4,14 +4,18 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.ItemInfo;
 import model.OrderInfo;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -100,8 +104,19 @@ public class OrderManagementFormController implements Initializable {
 
     @FXML
     void btnViewOrderDetailsOnAction(ActionEvent event) {
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderDetails_management.fxml"))));
+            stage.show();
 
+            showAlert(Alert.AlertType.INFORMATION, "View OrderDetails", "View OrderDetails Page loaded!");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+
+
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

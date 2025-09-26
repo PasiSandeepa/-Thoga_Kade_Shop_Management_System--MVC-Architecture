@@ -4,19 +4,23 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.ItemInfo;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ItemManagementFormController implements Initializable {
 
-    private ItemManagementService itemManagementService = new ItemManagementController();
+
 
     @FXML
     private TableColumn<?, ?> ColUnitPrice;
@@ -167,8 +171,17 @@ public class ItemManagementFormController implements Initializable {
     }
 
     public void btnviewOrderOnAction(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/order_management.fxml"))));
+            stage.show();
 
+            showAlert(Alert.AlertType.INFORMATION, "View Order", "View Order Page loaded!");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     }
-}
+
 
