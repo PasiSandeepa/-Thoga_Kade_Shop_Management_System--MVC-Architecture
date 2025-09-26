@@ -15,7 +15,7 @@
 - Framework: JavaFX
 - Architecture: MVC
 - Design Pattern: Singleton
-- Database: MySQL / SQLite
+- Database: MySQL
 
 ## Installation
 1. Clone the repository: `git clone <repo-url>`
