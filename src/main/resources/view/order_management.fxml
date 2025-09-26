@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.orderController.OrderManagementFormController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="651.0" prefWidth="972.0" style="-fx-background-position: #e55039;" styleClass="anchor-pane" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.orderController.OrderManagementFormController">
+    <children>
+        <TableView fx:id="tblOrder" layoutX="118.0" layoutY="62.0" prefHeight="244.0" prefWidth="702.0" stylesheets="@../css/style.css">
+            <columns>
+                <TableColumn fx:id="ColOrderID" prefWidth="129.60000896453857" text="OrderID" />
+                <TableColumn fx:id="colOrderDate" prefWidth="329.60003662109375" text="OrderDate" />
+                <TableColumn fx:id="ColCustID" prefWidth="237.5999755859375" text="CustID" />
 
+            </columns>
+        </TableView>
+        <Label layoutX="306.0" layoutY="-10.0" prefHeight="70.0" prefWidth="613.0" text="Order  Management" textFill="#cf2815">
+            <font>
+                <Font name="System Bold" size="44.0" />
+            </font>
+        </Label>
+        <AnchorPane layoutX="3.0" layoutY="397.0" prefHeight="258.0" prefWidth="982.0" styleClass="button" stylesheets="@../css/style.css">
+            <children>
+                <JFXTextField fx:id="txtOrderID" layoutX="142.0" layoutY="43.0" />
+                <Label layoutX="28.0" layoutY="43.0" prefHeight="31.0" prefWidth="96.0" text="OrderID">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Label layoutX="646.0" layoutY="43.0" text="CustID">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <JFXTextField fx:id="txtOrderDate" layoutX="438.0" layoutY="98.0" />
+                <JFXTextField fx:id="txtCustID" layoutX="737.0" layoutY="42.0" />
+                <Label layoutX="311.0" layoutY="99.0" prefHeight="31.0" prefWidth="111.0" text="OrderDate">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <JFXButton layoutX="406.0" layoutY="181.0" onAction="#btnADDOnAction" prefHeight="46.0" prefWidth="96.0" styleClass="jbutton" stylesheets="@../css/style.css" text="ADD" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton layoutX="531.0" layoutY="181.0" onAction="#btnUpdateOnAction" prefHeight="46.0" prefWidth="102.0" styleClass="btn" stylesheets="@../css/style.css" text="UPDATE" textFill="#151515">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton layoutX="648.0" layoutY="181.0" onAction="#btndeleteOnAction" prefHeight="46.0" prefWidth="96.0" styleClass="cbutton" stylesheets="@../css/style.css" text="DELETE" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton layoutX="766.0" layoutY="181.0" onAction="#btnViewOrderDetailsOnAction" prefHeight="46.0" prefWidth="194.0" styleClass="Dbutton" stylesheets="@../css/style.css" text="View Order Details" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                    </font>
+                </JFXButton>
+            </children>
+        </AnchorPane>
+        <JFXButton layoutX="701.0" layoutY="328.0" onAction="#btnReloadOnAction" prefHeight="46.0" prefWidth="124.0" styleClass="btn" stylesheets="@../css/style.css" text="Reload">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </JFXButton>
+
+    </children>
 </AnchorPane>
